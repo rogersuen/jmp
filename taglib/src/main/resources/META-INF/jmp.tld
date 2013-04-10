@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<taglib
+  version="2.0"
+  xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd">
+
+  <description>
+    This tag library contains all JavaMail Pages messaging tags for building 
+    templates of MIME messages.
+  </description>
+  <tlib-version>1.0</tlib-version>
+  <short-name>m</short-name>
+  <uri>http://www.javaplus.org/jmp</uri>
+
+  <tag>
+    <description>
+    <![CDATA[
+    <p>
+    Creates a header field on the message instance associated with
+    the most immediate enclosing &lt;m:message&gt; tag, or the body part
+    instance associated with the most immediate enclosing &lt;m:bodyPart&gt;
+    tag.
+    </p>
+
+    <p>Body Content</p>
+
+    <ul>
+    If the <code>value</code> attribute is absent, use the evaluated body
+    content as the value of the header.
+    </ul>
+    ]]>
+    </description>
+    <name>header</name>
+    <tag-class>org.javaplus.jmp.taglib.internet.TextInternetHeaderTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <description>
+      <![CDATA[
+      The name of the header.
+      ]]>
+      </description>
+      <name>name</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The name of the header.
+      ]]>
+      </description>
+      <name>value</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The character encoding used to encode the value of the header
+      containing non-ASCII characters. If the attribute is absent, a
+      reasonable default value will be determined automatically from
+      the context. In such a case, the default value is not guaranteed to
+      be as expected, and subjects to change in future releases.
+      ]]>
+      </description>
+      <name>charset</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <example>
+    <![CDATA[
+    <m:header name="X-Mail-Composer" value="JMP Version 1.0" charset="ISO-8859-1"/>
+    ]]>
+    </example>
+  </tag>
+
+  <tag>
+    <description>
+    <![CDATA[
+    <p>
+    Creates a "Subject" header field on the message instance associated with
+    the most immediate enclosing &lt;m:message&gt; tag.
+    </p>
+
+    <p>Body Content</p>
+    
+    <ul>
+    If the <code>value</code> attribute is absent, use the evaluated body
+    content as the value of the header
+    </ul>
+    ]]>
+    </description>
+    <name>subject</name>
+    <tag-class>org.javaplus.jmp.taglib.internet.InternetSubjectTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the subject.
+      ]]>
+      </description>
+      <name>value</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The character encoding used to encode the value of the subject
+      containing non-ASCII characters. If the attribute is absent, a
+      reasonable default value will be determined automatically from
+      the context. In such a case, the default value is not guaranteed to
+      be as expected, and subjects to change in future releases.
+      ]]>
+      </description>
+      <name>charset</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <example>
+    <![CDATA[
+    <m:subject value="Hello, World!" charset="ISO-8859-1"/>
+    ]]>
+    </example>
+  </tag>
+
+  <tag>
+    <description>
+    <![CDATA[
+    <p>
+    Creates a header field containing an address as the value on the message
+    instance associated with the most immediate enclosing &lt;m:message&gt; 
+    tag, or the body part instance associated with the most immediate
+    enclosing &lt;m:bodyPart&gt;.
+    </p>
+
+    <p>Body Content</p>
+
+    <ul>
+    If none of the <code>value</code> attribute and the <code>address</code>
+    attribute is specified, use the evaluated body content as the value 
+    of the header.
+    </ul>
+    ]]>
+    </description>
+    <name>address</name>
+    <tag-class>org.javaplus.jmp.taglib.internet.InternetAddressTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <description>
+      <![CDATA[
+      The name of the header.
+      ]]>
+      </description>
+      <name>name</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The address specification part of the address header.
+      ]]>
+      </description>
+      <name>address</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The personal part of the address header.
+      ]]>
+      </description>
+      <name>personal</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the address header. If the <code>address</code> attribute
+      is specified, the <code>value</code> attribute will simply be ignored.
+      ]]>
+      </description>
+      <name>value</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The character encoding used to encode any personal part of addresses
+      containing non-ASCII characters. If the attribute is absent,
+      a reasonable default value will be determined automatically from
+      the context. In such a case, the default value is not guaranteed to
+      be as expected, and subjects to change in future releases.
+      ]]>
+      </description>
+      <name>charset</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <example>
+    <![CDATA[
+    <m:address name="Resent-From" address="jsmith@example.com" personal="John Smith" charset="ISO-8859-1"/>
+    ]]>
+    </example>
+  </tag>
+
+  <tag>
+    <description>
+    <![CDATA[
+    <p>
+    Creates a "From" header field on the message instance associated with 
+    the most immediate enclosing &lt;m:message&gt; tag.
+    </p>
+
+    <p>Body Content</p>
+
+    <ul>
+    If none of the <code>value</code> attribute and the <code>address</code>
+    attribute is specified, use the evaluated body content as the value
+    of the header.
+    </ul>
+    ]]>
+    </description>
+    <name>from</name>
+    <tag-class>org.javaplus.jmp.taglib.internet.InternetFromTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <description>
+      <![CDATA[
+      The address specification part of the header field.
+      ]]>
+      </description>
+      <name>address</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The personal part of the header field.
+      ]]>
+      </description>
+      <name>personal</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the header field. If the <code>address</code> attribute
+      is specified, the <code>value</code> attribute will simply be ignored.
+      ]]>
+      </description>
+      <name>value</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The character encoding used to encode any personal part of addresses
+      containing non-ASCII characters. If the attribute is absent,
+      a reasonable default value will be determined automatically from
+      the context. In such a case, the default value is not guaranteed to
+      be as expected, and subjects to change in future releases.
+      ]]>
+      </description>
+      <name>charset</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <example>
+    <![CDATA[
+    <m:from address="jsmith@example.com" personal="John Smith" charset="ISO-8859-1"/>
+    ]]>
+    </example>
+  </tag>
+
+  <tag>
+    <description>
+    <![CDATA[
+    <p>
+    Creates a "To" header field on the message instance associated with
+    the most immediate enclosing &lt;m:message&gt; tag.
+    </p>
+
+    <p>Body Content</p>
+
+    <ul>
+    If none of the <code>value</code> attribute and the <code>address</code>
+    attribute is specified, use the evaluated body content as the value
+    of the header.
+    </ul>
+    ]]>
+    </description>
+    <name>to</name>
+    <tag-class>org.javaplus.jmp.taglib.internet.InternetToTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <description>
+      <![CDATA[
+      The address specification part of the header field.
+      ]]>
+      </description>
+      <name>address</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The personal part of the header field.
+      ]]>
+      </description>
+      <name>personal</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the header field. If the <code>address</code> attribute
+      is specified, the <code>value</code> attribute will simply be ignored.
+      ]]>
+      </description>
+      <name>value</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The character encoding used to encode any personal part of addresses
+      containing non-ASCII characters. If the attribute is absent,
+      a reasonable default value will be determined automatically from
+      the context. In such a case, the default value is not guaranteed to
+      be as expected, and subjects to change in future releases.
+      ]]>
+      </description>
+      <name>charset</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <example>
+    <![CDATA[
+    <m:to address="jsmith@example.com" personal="John Smith" charset="ISO-8859-1"/>
+    ]]>
+    </example>
+  </tag>
+
+  <tag>
+    <description>
+    <![CDATA[
+    <p>
+    Creates a "Sender" header field on the message instance associated with
+    the most immediate enclosing &lt;m:message&gt; tag.
+    </p>
+
+    <p>Body Content</p>
+
+    <ul>
+    If none of the <code>value</code> attribute and the <code>address</code>
+    attribute is specified, use the evaluated body content as the value
+    of the header.
+    </ul>
+    ]]>
+    </description>
+    <name>sender</name>
+    <tag-class>org.javaplus.jmp.taglib.internet.InternetSenderTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <description>
+      <![CDATA[
+      The address specification part of the header field.
+      ]]>
+      </description>
+      <name>address</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The personal part of the header field.
+      ]]>
+      </description>
+      <name>personal</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the header field. If the <code>address</code> attribute
+      is specified, the <code>value</code> attribute will simply be ignored.
+      ]]>
+      </description>
+      <name>value</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The character encoding used to encode any personal part of addresses
+      containing non-ASCII characters. If the attribute is absent,
+      a reasonable default value will be determined automatically from
+      the context. In such a case, the default value is not guaranteed to
+      be as expected, and subjects to change in future releases.
+      ]]>
+      </description>
+      <name>charset</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <example>
+    <![CDATA[
+    <m:sender address="jsmith@example.com" personal="John Smith" charset="ISO-8859-1"/>
+    ]]>
+    </example>
+  </tag>
+
+  <tag>
+    <description>
+    <![CDATA[
+    <p>
+    Creates a "Reply-To" header field on the message instance associated with
+    the most immediate enclosing &lt;m:message&gt; tag.
+    </p>
+
+    <p>Body Content</p>
+
+    <ul>
+    If none of the <code>value</code> attribute and the <code>address</code>
+    attribute is specified, use the evaluated body content as the value
+    of the header.
+    </ul>
+    ]]>
+    </description>
+    <name>reply-to</name>
+    <tag-class>org.javaplus.jmp.taglib.internet.InternetReplyToTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <description>
+      <![CDATA[
+      The address specification part of the header field.
+      ]]>
+      </description>
+      <name>address</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The personal part of the header field.
+      ]]>
+      </description>
+      <name>personal</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the header field. If the <code>address</code> attribute
+      is specified, the <code>value</code> attribute will simply be ignored.
+      ]]>
+      </description>
+      <name>value</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The character encoding used to encode any personal part of addresses
+      containing non-ASCII characters. If the attribute is absent,
+      a reasonable default value will be determined automatically from
+      the context. In such a case, the default value is not guaranteed to
+      be as expected, and subjects to change in future releases.
+      ]]>
+      </description>
+      <name>charset</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <example>
+    <![CDATA[
+    <m:reply-to address="jsmith@example.com" personal="John Smith" charset="ISO-8859-1"/>
+    ]]>
+    </example>
+  </tag>
+
+  <tag>
+    <description>
+    <![CDATA[
+    <p>
+    Creates a message instance.
+    </p>
+
+    <p>Body Content</p>
+
+    <ul>
+    If no content is set by any nested messaging tag (&lt;m:multipart&gt;),
+    use the evaluated body content as the text content of the message.
+    </ul>
+
+    <p>Content Type</p>
+
+    <ul>
+    <li>
+    If the <code>url</code> attribute is specified, the content type will
+    be automatically determined from the resource located at the specified
+    URL. The <code>contentType</code> attribute will be ignored.
+    </li>
+    <li>
+    If the content is a multipart set by the nested &lt;m:multipart&gt; tag,
+    the content type for the message is "multipart", the subtype is the
+    value of the <code>subtype</code> attribute of the &lt;m:multipart&gt;
+    tag. The <code>contentType</code> attribute will be ignored.
+    </li>
+    <li>
+    If using the evaluated body content as the text content of the message,
+    the value of the <code>contentType</code> attribute will be used. If
+    the <code>contentType</code> attribute is absent, use the default value
+    of "text/plain".
+    </li>
+    </ul>
+    ]]>
+    </description>
+    <name>message</name>
+    <tag-class>org.javaplus.jmp.taglib.internet.MimeMessageTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the "Content-Type" header field.
+      ]]>
+      </description>
+      <name>contentType</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the "Content-Description" header field which represents
+      a descriptive information of the message content.
+      ]]>
+      </description>
+      <name>description</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the "Content-Disposition" header field which conveys
+      presentation style information. Valid values include "inline",
+      "attachment" and other extension values.
+      ]]>
+      </description>
+      <name>disposition</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the "filename" parameter of the "Content-Disposition"
+      header field. For compatibility with older mailers, the value is also
+      used for the "name" parameter of the "Content-Type" header field.
+      ]]>
+      </description>
+      <name>fileName</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The URL of the resource to import. This attribute has the very same
+      semantic with the attribute of &lt;c:import&gt; tag in JSTL.
+      ]]>
+      </description>
+      <name>url</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The name of the context when accessing a relative URL resource that
+      belongs to a foreign context. This attribute has the very same
+      semantic with the attribute of &lt;c:import&gt; tag in JSTL.
+      ]]>
+      </description>
+      <name>context</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+  </tag>
+
+  <tag>
+    <description>
+    <![CDATA[
+    <p>
+    Creates a multipart on the message instance associated with
+    the most immediate enclosing &lt;m:message&gt; tag, or the body part
+    instance associated with the most immediate enclosing &lt;m:bodyPart&gt;
+    tag.
+    </p>
+
+    <p>Body Content</p>
+
+    <ul>
+    The evaluated body content will be ignored.
+    </ul>
+    ]]>
+    </description>
+    <name>multipart</name>
+    <tag-class>org.javaplus.jmp.taglib.internet.MimeMultipartTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <description>
+      <![CDATA[
+      The subtype of the multipart. Valid values include "mixed",
+      "alternative", "related" and other extension values. If this attribute
+      is absent, use the default value of "mixed".
+      ]]>
+      </description>
+      <name>subtype</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+  </tag>
+
+  <tag>
+    <description>
+    <![CDATA[
+    <p>
+    Creates and adds a body part instance to the multipart instance
+    associated with the most immediate enclosing &lt;m:multipart&gt; tag.
+    </p>
+
+    <p>Body Content</p>
+
+    <ul>
+    If no content is set by any nested messaging tag (&lt;m:multipart&gt;),
+    use the evaluated body content as the text content of the message.
+    </ul>
+
+    <p>Content Type</p>
+
+    <ul>
+    <li>
+    If the <code>url</code> attribute is specified, the content type will
+    be automatically determined from the resource located at the specified
+    URL. The <code>contentType</code> attribute will be ignored.
+    </li>
+    <li>
+    If the content is a multipart set by the nested &lt;m:multipart&gt; tag,
+    the content type for the body part is "multipart", the subtype is the
+    value of the <code>subtype</code> attribute of the &lt;m:multipart&gt;
+    tag. The <code>contentType</code> attribute will be ignored.
+    </li>
+    <li>
+    If using the evaluated body content as the text content of the body part,
+    the value of the <code>contentType</code> attribute will be used. If
+    the <code>contentType</code> attribute is absent, use the default value
+    of "text/plain".
+    </li>
+    </ul>
+    ]]>
+    </description>
+    <name>bodyPart</name>
+    <tag-class>org.javaplus.jmp.taglib.internet.MimeBodyPartTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the "Content-ID" header field.
+      ]]>
+      </description>
+      <name>contentID</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the "Content-Type" header field.
+      ]]>
+      </description>
+      <name>contentType</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the "Content-Description" header field which represents
+      a descriptive information of the message content.
+      ]]>
+      </description>
+      <name>description</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the "Content-Disposition" header field which conveys
+      presentation style information. Valid values include "inline",
+      "attachment" and other extension values.
+      ]]>
+      </description>
+      <name>disposition</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The value of the "filename" parameter of the "Content-Disposition"
+      header field. For compatibility with older mailers, the value is also
+      used for the "name" parameter of the "Content-Type" header field.
+      ]]>
+      </description>
+      <name>fileName</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The URL of the resource to import. This attribute has the very same
+      semantic with the attribute of &lt;c:import&gt; tag in JSTL.
+      ]]>
+      </description>
+      <name>url</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description>
+      <![CDATA[
+      The name of the context when accessing a relative URL resource that
+      belongs to a foreign context. This attribute has the very same
+      semantic with the attribute of &lt;c:import&gt; tag in JSTL.
+      ]]>
+      </description>
+      <name>context</name>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+  </tag>
+</taglib>

@@ -1,0 +1,14 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<table width="100%" cellpadding="2" cellspacing="2">
+  <tr>
+    <td align="left" nowrap>
+      <span><a href="<c:url value='/index.jsp'/>">Examples Index</a></span>
+      <span>&nbsp;|&nbsp;</span>
+      <span><a href="<c:url value='/config.jsp'/>">Configuration</a></span>
+    </td>
+    <td align="right" nowrap>
+      <b>JavaMail Pages Tag Library</b>
+    </td>
+  </tr>
+</table>
