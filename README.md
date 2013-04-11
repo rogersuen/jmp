@@ -12,7 +12,7 @@ files in the 'lib' directory (javaplus-jmp.jar)to your application's
 WEB-INF/lib directory. Then, import the template tag library into your
 pages with the following directives:
 
-  <%@ taglib prefix="m" uri="http://www.javaplus.org/jmp" %>
+    <%@ taglib prefix="m" uri="http://www.javaplus.org/jmp" %>
 
 or introducing a new namespace with the above URI in a JSP document
 in XML syntax.
@@ -35,7 +35,7 @@ The following file is a standalone web application (WAR) in order to help
 you to learn and use JMP. Deploy the application to your container, and
 follow the examples to familiarize yourself with the usage of JMP.
 
-  jmp-examples.war            Example application of JMP usage
+    jmp-examples.war            Example application of JMP usage
 
 Documentation
 -------------
