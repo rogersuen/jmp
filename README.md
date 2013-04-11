@@ -16,7 +16,7 @@ Then, import the template tag library into your pages with the following directi
 or introducing a new namespace with the above URI in a JSP document
 in XML syntax.
 
-The following is an simple JSP page, from the examples web application, 
+The following is n simple JSP page from the examples web application, 
 demonstrating typical usage of the tag library.
 
     <%@taglib prefix="m" uri="http://www.javaplus.org/jmp"%>
